@@ -3,10 +3,16 @@ package co.edu.umanizales.tads.model;
 import ch.qos.logback.core.joran.spi.ElementSelector;
 import lombok.Data;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 @Data
 public class ListSE {
     private Node head;
     private int size;
+
     /*
     Algoritmo de adicionar al final
     Entrada
@@ -23,21 +29,19 @@ public class ListSE {
     no
         metemos el niño en el costal y ese costal es la cabeza
      */
-    public void add(Kid kid){
-        if(head != null){
+    public void add(Kid kid) {
+        if (head != null) {
             Node temp = head;
-            while(temp.getNext() !=null)
-            {
+            while (temp.getNext() != null) {
                 temp = temp.getNext();
             }
             /// Parado en el último
             Node newNode = new Node(kid);
             temp.setNext(newNode);
-        }
-        else {
+        } else {
             head = new Node(kid);
         }
-        size ++;
+        size++;
     }
 
     /* Adicionar al inicio
@@ -49,24 +53,22 @@ public class ListSE {
     no
         meto el niño en un costal y lo asigno a la cabez
      */
-    public void addToStart(Kid kid){
-        if(head !=null)
-        {
+    public void addToStart(Kid kid) {
+        if (head != null) {
             Node newNode = new Node(kid);
             newNode.setNext(head);
             head = newNode;
-        }
-        else {
+        } else {
             head = new Node(kid);
         }
         size++;
     }
 
-    public void invert(){
-        if(this.head !=null){
+    public void invert() {
+        if (this.head != null) {
             ListSE listCp = new ListSE();
             Node temp = this.head;
-            while(temp != null){
+            while (temp != null) {
                 listCp.addToStart(temp.getData());
                 temp = temp.getNext();
             }
@@ -74,16 +76,14 @@ public class ListSE {
         }
     }
 
-    public void orderBoysToStart(){
-        if(this.head !=null){
+    public void orderBoysToStart() {
+        if (this.head != null) {
             ListSE listCp = new ListSE();
             Node temp = this.head;
-            while(temp != null){
-                if(temp.getData().getGender()=='M')
-                {
+            while (temp != null) {
+                if (temp.getData().getGender() == 'M') {
                     listCp.addToStart(temp.getData());
-                }
-                else{
+                } else {
                     listCp.add(temp.getData());
                 }
 
@@ -93,12 +93,10 @@ public class ListSE {
         }
     }
 
-    public void changeExtremes(){
-        if(this.head !=null && this.head.getNext() !=null)
-        {
+    public void changeExtremes() {
+        if (this.head != null && this.head.getNext() != null) {
             Node temp = this.head;
-            while(temp.getNext()!=null)
-            {
+            while (temp.getNext() != null) {
                 temp = temp.getNext();
             }
             //temp está en el último
@@ -109,12 +107,12 @@ public class ListSE {
 
     }
 
-    public int getCountKidsByLocationCode(String code){
-        int count =0;
-        if( this.head!=null){
+    public int getCountKidsByLocationCode(String code) {
+        int count = 0;
+        if (this.head != null) {
             Node temp = this.head;
-            while(temp != null){
-                if(temp.getData().getLocation().getCode().equals(code)){
+            while (temp != null) {
+                if (temp.getData().getLocation().getCode().equals(code)) {
                     count++;
                 }
                 temp = temp.getNext();
@@ -122,6 +120,7 @@ public class ListSE {
         }
         return count;
     }
+
     public int getByLocationCode(String code) {
         int count = 0;
         if (this.head != null) {
@@ -134,8 +133,7 @@ public class ListSE {
             }
         }
         return count;
+    }
 }
 
 
-
-}
