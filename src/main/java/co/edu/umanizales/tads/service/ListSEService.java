@@ -16,8 +16,14 @@ public class ListSEService {
 
     }
 
-   public void invert(){
-        kids.invert();
-    }
+   public void invert(){kids.invert();}
+    public void getOrderBoystoStart(){kids.getorderBoysToStart();}
+    public void getAlternateKids(){kids.getAlternateKids();}
+    public void deleteKidbyAge(){kids.deleteKidbyAge();}
+    public float averageAge(){return kids.averageAge();}
+    public void GainPositionKid(){kids.GainPositionKid();}
+    public void GetPostById(String id){kids.GetPostById();}
+    public void moveKid(char letter){kids.moveKid();}
+
 
 }
