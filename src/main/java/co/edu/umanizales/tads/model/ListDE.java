@@ -7,6 +7,7 @@ public class ListDE {
     String id;
     int gain;
     byte age;
+    private int size;
 
 
     private Node getHead() {
@@ -264,7 +265,6 @@ public class ListDE {
 // 9.
 
 
-
 // 10.
 
 
@@ -299,6 +299,53 @@ public class ListDE {
             } else {
                 prev = current;
                 current = current.getNext();
+            }
+        }
+    }
+
+
+
+// Quizz 08/05/23
+
+    /*
+    Se inicia con un bucle que recorra la lista, con un bucle while que se ejecuta siempre y cuando el nodo actual no sea nulo.
+    Dentro del bucle, se verifica si la mascota del nodo actual tiene el mismo nombre que el que se quiere eliminar. Si es así,
+    se elimina.
+
+    Si el nodo actual es la cabeza de la lista, la cabeza se establece como el siguiente nodo al
+    nodo actual. Si hay un siguiente nodo,se establececomo previo el valor nulo. Si no hay un siguiente nodo,
+    la lista está vacía y la cola se establece como nula.
+
+   Luego ctualizamos el enlace de tail al nodo anterior al actual y establecemos el enlace siguiente de ese nodo como nulo,
+   lo que hace indicar que no hay más nodos después de ese.
+
+    El nodo anterior al nodo actual apuntará al siguiente nodo después del nodo actual,
+    y el nodo siguiente al nodo actual ahora apuntará al nodo anterior al nodo actual
+     */
+    public void add(Pet newPet) {
+    }
+    public void DeletePet (String name) {
+        NodeDE actual = head;
+        while (actual != null) {
+            if (actual.getPet().getClass().equals(name)) {
+                // Encontramos la mascota a eliminar
+                if (actual == head) {
+
+                    head = (Node) actual.getNext();
+                    if (head != null) {
+
+                        head.setPrev(null);
+                    } else {
+                        tail = null;
+                    }
+                } else if (actual == tail) {
+                    tail = actual.getPrev();
+                    tail.setNext(null);
+                } else {
+                    // La mascota está en medio de la lista
+                    actual.getPrev().setNext((Node) actual.getNext());
+                    actual.getNext().setPrev(actual.getPrev());
+                }
             }
         }
     }
